@@ -2,17 +2,20 @@ package player;
 import java.util.ArrayList;
 import items.Item;
 
+
 public class Player {
     private String name;
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<Item>();
     private int money = 100;
     private int attackMin = 1;
     private int attackMax = 3;
-    private int hp = 30;
+    private int hp = 20;
+    private boolean apple = false; 
 
-    public Player(String name, int  money) {
+    public Player(String name, int  money, boolean apple) {
         this.name = name;
         this.money = money;
+        this.apple = apple;
     }
 
     public int attack() {
@@ -31,7 +34,7 @@ public class Player {
         //return (int) (Math.random() * 0); // miss 5/100 == 1/20   attack 95/100 = 19/20
 
         //return (int) (Math.random() * (max - min + 1) + min); // normal attack     
-        
+
     }
 
     public void buyItem(Item item) throws Exception {
@@ -67,7 +70,21 @@ public class Player {
         return hp;
     }
 
+    public int recoverHP() {
+        hp = 20;
+        return hp;
+    }
+
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public boolean getApple() {
+        return apple;
+    }
+
+    public boolean haveApple() {
+        apple = true;
+        return apple;
     }
 }

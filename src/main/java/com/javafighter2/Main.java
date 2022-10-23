@@ -1,7 +1,10 @@
+package com.javafighter2;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import items.Item;
 import player.Player;
+
+
 
 // encapsulation カプセル化　setter getter 
 class Main {
@@ -30,12 +33,11 @@ class Main {
 
         // System.out.println("Player 2, what is your name?");
         // Player p2 = new Player(br.readLine());
-        Player p1 = new Player("Erik", 100);
-        Player p2 = new Player("Natsuhop", 100);
+        Player p1 = new Player("Erik", 100, false);
+        Player p2 = new Player("Natsuhop", 100, false);
 
         buyItems(p1);
         buyItems(p2);
-
 
         // Fight!
         while (true) {
@@ -44,16 +46,18 @@ class Main {
             int damage = p2.takeDamage(attack);
 
             if (attack == 0) {
-                System.out.println( "Oh!..." + p1.getName() + " misses!");
+                System.out.println( "Oops!..." + p1.getName() + " misses!");
             } else {
                 System.out.println(p1.getName() + " hits " + p2.getName() + " for " + attack + ". " + p2.getName() + " takes " + damage + " damage and has " + p2.getHp() + " HP left");
             }
+
+           
             // P2 attacks
             attack = p2.attack();
             damage = p1.takeDamage(attack);
 
             if (attack == 0) {
-                System.out.println( "Oh!..." + p2.getName() + " misses!");
+                System.out.println( "Oops!..." + p2.getName() + " misses!");
             } else {
                 System.out.println(p2.getName() + " hits " + p1.getName() + " for " + attack + ". " + p1.getName() + " takes " + damage + " damage and has " + p1.getHp() + " HP left");
             }
@@ -67,13 +71,28 @@ class Main {
             } else if (p2.getHp() <= 0) {
                 System.out.println(p1.getName() + " wins!");
                 break;
+            }  else if (p1.getHp() <= 10 && p1.getApple() == false) {
+                System.out.println(p1.getName() + " Do you eat a apple? ");
+                String answer = br.readLine(); 
+                if (answer.equals("y")) {
+                    p1.recoverHP();
+                    p1.haveApple();
+                }
+            } else if (p2.getHp() <= 10 && p2.getApple() == false) {
+                System.out.println(p2.getName() +  " Do you eat a apple? ");
+                String answer = br.readLine();
+                if (answer.equals("y")) {
+                    p2.recoverHP();
+                    p2.haveApple();
+                }
             }
+
         }
     }
 
     private static void buyItems(Player player) throws Exception {
         while (true) {
-            System.out.println(player.getName() + ", what do you want to buy?");
+            System.out.println(player.getName() + ", What do you want to buy?");
             for (int i = 0; i < items.length; i++) {
                 if (player.getMoney() >= items[i].getCost()) {
                     System.out.println((i+1) + " - " + items[i].toString());
