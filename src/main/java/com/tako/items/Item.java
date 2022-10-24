@@ -1,4 +1,4 @@
-package items;
+package com.tako.items;
 
 // Visibility
 // private: only this class can use it

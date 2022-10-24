@@ -1,8 +1,9 @@
-package com.javafighter2;
+package com.tako;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import items.Item;
-import player.Player;
+
+import com.tako.items.Item;
+import com.tako.player.Player;
 
 
 

@@ -1,4 +1,4 @@
-package com.javafighter2;
+package com.tako;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

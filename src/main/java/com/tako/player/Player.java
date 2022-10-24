@@ -1,6 +1,7 @@
-package player;
+package com.tako.player;
 import java.util.ArrayList;
-import items.Item;
+
+import com.tako.items.Item;
 
 
 public class Player {
